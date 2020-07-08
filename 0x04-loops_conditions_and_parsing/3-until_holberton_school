@@ -2,8 +2,8 @@
 displays Holberton School.
 
 i=0
-until [ $i -eq 10 ]
+until [ "$i" -gt 9 ]
 do
     echo "Holberton School"
-    (( i++ ))
+    ((i++))
 done
