@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# holberton task
+
+ps aux | grep bash
