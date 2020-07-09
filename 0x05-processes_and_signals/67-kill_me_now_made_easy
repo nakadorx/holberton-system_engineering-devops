@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# holberton task
-
-pkill -f ./7-highlander
