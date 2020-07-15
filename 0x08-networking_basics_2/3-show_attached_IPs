@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# holberton task
+
+ifconfig | awk -F '[: ]+' '/inet addr:/ {print $4}'
