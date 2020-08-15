@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # commands 
-
 sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
 sudo service nginx restart
 sudo pkill -o nginx
