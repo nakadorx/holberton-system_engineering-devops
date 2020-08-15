@@ -1,25 +1,20 @@
 #!/usr/bin/env bash                                                                                      
-# Configuration server                                                                  
-                                  
+# Configuration server                                                                                                
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo service nginx start
 sudo ufw allow 'Nginx HTTP'
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
-                                                                                    
+echo "Holberton School" > /var/www/html/index.nginx-debian.html                                                                           
 new_config="\trewrite \^\/redirect_me\/\$ https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4 permanent\;"
 conf_file="/etc/nginx/sites-enabled/default"
 server="0,/server\s+\{/s//& \n"
-sudo sed -i -E "${server}${new_config}/" $conf_file
-                                                                                    
+sudo sed -i -E "${server}${new_config}/" $conf_file                                                                            
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html
 new_config="\\\n\terror_page 404 /custom_404.html;\n"
 file="/etc/nginx/sites-enabled/default"
 sudo sed -i "43i $new_config" $file
-
 st="http {"
 hostname=$(cat /etc/hostname)
 myc="\n\tadd_header X-Served-By \"$hostname\";"
-sudo sed -i "0,/$st/{s/$st/$st$myc/}" /etc/nginx/nginx.conf
-                                                                     
+sudo sed -i "0,/$st/{s/$st/$st$myc/}" /etc/nginx/nginx.conf                                                                
 sudo service nginx restart
